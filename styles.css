@@ -1,3 +1,12 @@
 body {
-    background-color: #ccc;
+    /*background: #1d1e22;
+    color: #fff;*/
+    background-color: rgb(68, 72, 87);
+    color: rgb(183, 187, 200);
+}
+
+div {
+    background-color: rgb(68, 72, 87);
+    color: rgb(183, 187, 200);
+
 }
