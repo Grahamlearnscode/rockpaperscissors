@@ -1,5 +1,10 @@
 console.log('script connected');
 
+
+let w=0;
+let c=0;
+let i=0;
+
 function computerPlay() {
 
     //choose a random number 1-3
@@ -83,5 +88,28 @@ switch (playerChoice) {
     
     default: console.error('Invalid comparison: ' + playerChoice + ' + ' + computerChoice);
 }
-return winner;
+return winner;}
+
+
+function game() {
+    if (i<5) {
+        let winner=playRound();
+        i++;
+        if (winner==='draw'){console.log('It was a draw');}
+        else if (winner==='player'){
+            console.log('You won this round!');
+            w++;
+        }
+        else {
+            console.log('The computer won this round.');
+            c++;
+        }
+        }
+    else {
+        console.log('After five games played, you won ' + w + ' of them. The computer won ' + c + '. ');
+        if (w>c) {console.log('That makes you the overall winner!');}
+        else if (c>w) {console.log('That means the computer won overall. Hard luck.');}
+        else {console.log('It was a draw.')}
+        }
 }
+
