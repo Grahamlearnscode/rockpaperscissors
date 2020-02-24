@@ -58,29 +58,30 @@ let playerChoice=playerSelection();
 console.log('Player chose ' + playerChoice);
 let computerChoice=computerPlay();
 console.log('Computer chose ' + computerChoice);
-
+let winner
 //Compare for who wins
 switch (playerChoice) {
     case computerChoice:
     console.log('You both chose ' + playerChoice + '. That\'s a draw!');
+    winner='draw';
     break;
 
     case 'Rock':
-        if (computerChoice==='Scissors') {console.log('Rock blunts Scissors. You win!')}
-        else {console.log('Paper covers Rock. You lose!')};
+        if (computerChoice==='Scissors') {console.log('Rock blunts Scissors. You win!'); winner='player';}
+        else {console.log('Paper covers Rock. You lose!'); winner='computer';};
     break;
 
     case 'Paper':
-        if (computerChoice==='Rock') {console.log('Paper covers Rock. You win!')}
-        else {console.log('Scissors cuts Paper. You lose!')};
+        if (computerChoice==='Rock') {console.log('Paper covers Rock. You win!'); winner='player';}
+        else {console.log('Scissors cuts Paper. You lose!'); winner='computer';};
     break;
 
     case 'Scissors':
-        if (computerChoice==='Paper') {console.log('Scissors cuts Paper. You win!')}
-        else {console.log('Rock blunts Scissors. You lose!')};
+        if (computerChoice==='Paper') {console.log('Scissors cuts Paper. You win!'); winner='player';}
+        else {console.log('Rock blunts Scissors. You lose!'); winner='computer';};
     break;
     
     default: console.error('Invalid comparison: ' + playerChoice + ' + ' + computerChoice);
 }
-
+return winner;
 }
