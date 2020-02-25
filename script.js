@@ -1,5 +1,4 @@
-console.log('script connected');
-
+////Working fine on valid inputs. Invalid inputs are logged, haven't yet found a way to loop back to the correct starting point of calling the function though
 
 let w=0;
 let c=0;
@@ -95,13 +94,13 @@ function game() {
     if (i<5) {
         let winner=playRound();
         i++;
-        if (winner==='draw'){console.log('It was a draw');}
+        if (winner==='draw'){console.log('Round ' + i + ' was a draw.');}
         else if (winner==='player'){
-            console.log('You won this round!');
+            console.log('You won round ' + i + '!');
             w++;
         }
         else {
-            console.log('The computer won this round.');
+            console.log('The computer won round ' + i + '.');
             c++;
         }
         }

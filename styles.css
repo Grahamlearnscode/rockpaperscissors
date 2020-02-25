@@ -10,3 +10,7 @@ div {
     color: rgb(183, 187, 200);
 
 }
+
+a {
+    color: inherit;
+}
