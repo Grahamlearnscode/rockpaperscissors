@@ -8,3 +8,5 @@ Do this using 3 functions: Computer should choose a random entry; player should 
 Make the inputs case-insensitive.
 Return the results.
 Create a fourth function that handles 5 rounds of gameplay and declares an overall winner.
+
+I went a little further than the spec and added a rudimentary UI to it. It's working fine in testing and I can't spot any major issues. It validates entries and logs invalid ones to the console; ultimately I'd want it to re-run from the prompt for the player's choice when that happens, but couldn't figure out a way to do that. Definitely one to revisit when I know more, for that and also to make the loop of 5 rounds happen automatically.
