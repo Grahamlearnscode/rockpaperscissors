@@ -1,5 +1,3 @@
-//returning winner still needs to happen for round counters to work
-//but winnerText should not use winner. Let's take the console log lines and have those be winnerText - they're already written to read correctly whether win/lose/draw
 //Also need to give transparency in the DOM - you chose x computer chose y result was z
 
 function togglePlayControls() {
@@ -13,7 +11,9 @@ function playRound(playerChoice) {
     console.log('Player chose ' + playerChoice);
     let computerChoice=computerPlay();
     console.log('Computer chose ' + computerChoice);
-    let winner=compareChoices(playerChoice, computerChoice);
+    let result=compareChoices(playerChoice, computerChoice);
+    console.log(result);
+    document.querySelector('#resultText').textContent=result;
     console.log('winner is ' + winner);
     updateWinnerText(winner);
 }
@@ -22,33 +22,34 @@ function compareChoices(playerChoice, computerChoice) {
     console.log('comparing ' + playerChoice + ' to ' + computerChoice);
     switch (playerChoice) {
         case computerChoice:
-        console.log('You both chose ' + playerChoice + '. That\'s a draw!');
+        result='You both chose ' + playerChoice + '. That\'s a draw!';
         winner='draw';
         break;
     
         case 'Rock':
-            if (computerChoice==='Scissors') {console.log('Rock blunts Scissors. You win!'); winner='player';}
-            else {console.log('Paper covers Rock. You lose!'); winner='computer';};
+            if (computerChoice==='Scissors') {result='Rock blunts Scissors. You win!'; winner='player';}
+            else {result='Paper covers Rock. You lose!'; winner='computer';};
         break;
     
         case 'Paper':
-            if (computerChoice==='Rock') {console.log('Paper covers Rock. You win!'); winner='player';}
-            else {console.log('Scissors cuts Paper. You lose!'); winner='computer';};
+            if (computerChoice==='Rock') {result='Paper covers Rock. You win!'; winner='player';}
+            else {result='Scissors cuts Paper. You lose!'; winner='computer';};
         break;
     
         case 'Scissors':
-            if (computerChoice==='Paper') {console.log('Scissors cuts Paper. You win!'); winner='player';}
-            else {console.log('Rock blunts Scissors. You lose!'); winner='computer';};
+            if (computerChoice==='Paper') {result='Scissors cuts Paper. You win!'; winner='player';}
+            else {result='Rock blunts Scissors. You lose!'; winner='computer';};
         break;
         
         default: console.error('Invalid comparison: ' + playerChoice + ' + ' + computerChoice);}
-        return winner;
+        return result;
    }
 
    function updateWinnerText(winner) {
-    console.log('updating winner text to show ' + winner);
     let winnerText = document.querySelector('#winnerText');
-    winnerText.textContent='A winner is ' + winner;
+    if (winner=='player') {winnerText.textContent='You won the last round.';}
+    else if (winner=='computer') {winnerText.textContent='The computer won the last round.';}
+    else {winnerText.textContent='The last round was a draw.';}
 }
 
 function computerPlay() {
