@@ -14,3 +14,11 @@ div {
 a {
     color: inherit;
 }
+
+.inactive {
+    display: none;
+}
+
+.select {
+    display: none;
+}
