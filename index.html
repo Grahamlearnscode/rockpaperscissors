@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Rock, Paper, Scissors | GrahamLearnsCode</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="script.js"></script>
 
@@ -9,13 +10,19 @@
 <body>
 
     <h1>Rock, Paper, Scissors</h1>
-    <p>Press F12 to <a href="https://www.google.com/search?q=how+to+open+devtools+on+different+browsers&spell=1&sa=X&ved=2ahUKEwivjKDiwO3nAhWPTsAKHQeIBOMQBSgAegQIDxAn&biw=952&bih=938" target=none>open dev tools</a>. Check the Console.</p>
-    <p>You'll play 5 rounds. Ready?</p>
-    <button onclick="game()">Play</button>
-
-<script>
 
     
+    <button id='play' onclick="togglePlayControls()">Play game</button>
+
+    <button class="select" onclick="playRound('Rock')">Rock</button>
+    <button class="select" onclick="playRound('Paper')">Paper</button>
+    <button class="select" onclick="playRound('Scissors')">Scissors</button>
+
+    <p id='playerText'></p>
+    <p id='computerText'></p>
+    <p id='winnerText'></p>
+
+<script>
 
 
 
