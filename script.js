@@ -1,6 +1,9 @@
-//Also need to give transparency in the DOM - you chose x computer chose y result was z
-//Button chosen should hightlight or others should grey out
-//Also add 'computer choosing...' visibility in UI
+//Needs a replay option. This should retain the winnerText but reset play controls and other messaging back to 'make your selection'.
+//CSS element visibility:hidden should allow the other elements to be hidden while keeping the position of winnerText intact.
+
+//delay. wait(2000) gives a 2s wait
+//(async () => { await wait(2000); nextFunctionToCall() })()
+var wait = ms => new Promise((r, j)=>setTimeout(r, ms));
 
 function togglePlayControls() {
     const playButton = document.querySelector('#play');
@@ -12,15 +15,21 @@ function togglePlayControls() {
 
 function playRound(playerChoice) {
     highlightButton(playerChoice);
-    disableRpsControls();
+    disableRpsControls()
     console.log('Player chose ' + playerChoice);
     let computerChoice=computerPlay();
     console.log('Computer chose ' + computerChoice);
     let result=compareChoices(playerChoice, computerChoice);
     console.log(result);
-    document.querySelector('#resultText').textContent=result;
+        (async () => { await wait(200);
+        document.querySelector('#computerText').textContent='Choosing...'; })();
+        (async () => { await wait(1000);
+            document.querySelector('#computerText').textContent='Computer chose ' + computerChoice; })();
     console.log('winner is ' + winner);
-    updateWinnerText(winner);
+        (async () => { await wait(1800);
+            document.querySelector('#resultText').textContent=result; })();
+        (async () => { await wait(2600);
+            updateWinnerText(winner); })();
 }
 
 function compareChoices(playerChoice, computerChoice) {
@@ -48,7 +57,7 @@ function compareChoices(playerChoice, computerChoice) {
         
         default: console.error('Invalid comparison: ' + playerChoice + ' + ' + computerChoice);}
         return result;
-   }
+}
 
    function updateWinnerText(winner) {
     let winnerText = document.querySelector('#winnerText');
@@ -73,12 +82,12 @@ function computerPlay() {
     return computerChoice;
 }
 
-
 function highlightButton(selectedButton) {
     selectedButton=document.querySelector('#'+selectedButton);
-    selectedButton.style.background = 'lightblue';
-    selectedButton.style['border-color'] = 'lightblue';
-  }
+    selectedButton.style.background = '#deeff5';
+    selectedButton.style['border-color'] = '#deeff5';
+    selectedButton.style.color = '#45565c';
+}
 
 function disableRpsControls() {
   let rpsControls=document.querySelectorAll('.rpsControl');
