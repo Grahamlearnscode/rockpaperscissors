@@ -1,13 +1,18 @@
 //Also need to give transparency in the DOM - you chose x computer chose y result was z
+//Button chosen should hightlight or others should grey out
+//Also add 'computer choosing...' visibility in UI
 
 function togglePlayControls() {
     const playButton = document.querySelector('#play');
     playButton.classList.toggle('inactive');
-    let selectButtons = document.querySelectorAll('.select');
-    selectButtons.forEach(foo => foo.classList.toggle('select'));
+    let selectButtons = document.querySelectorAll('.hidden');
+    selectButtons.forEach(foo => foo.classList.toggle('hidden'));
+    selectButtons.forEach(foo => foo.classList.toggle('rpsControl'))
 }
 
 function playRound(playerChoice) {
+    highlightButton(playerChoice);
+    disableRpsControls();
     console.log('Player chose ' + playerChoice);
     let computerChoice=computerPlay();
     console.log('Computer chose ' + computerChoice);
@@ -68,6 +73,17 @@ function computerPlay() {
     return computerChoice;
 }
 
+
+function highlightButton(selectedButton) {
+    selectedButton=document.querySelector('#'+selectedButton);
+    selectedButton.style.background = 'lightblue';
+    selectedButton.style['border-color'] = 'lightblue';
+  }
+
+function disableRpsControls() {
+  let rpsControls=document.querySelectorAll('.rpsControl');
+  rpsControls.forEach(rpsControl => rpsControl.disabled = true);
+}
 
 //Counters for round winners
 let w=0; let c=0; let i=0;
