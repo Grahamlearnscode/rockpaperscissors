@@ -1,5 +1,3 @@
-//Needs a replay option. This should retain the winnerText but reset play controls and other messaging back to 'make your selection'.
-//CSS element visibility:hidden should allow the other elements to be hidden while keeping the position of winnerText intact.
 
 //delay. wait(2000) gives a 2s wait
 //(async () => { await wait(2000); nextFunctionToCall() })()
@@ -21,15 +19,20 @@ function playRound(playerChoice) {
     console.log('Computer chose ' + computerChoice);
     let result=compareChoices(playerChoice, computerChoice);
     console.log(result);
+    document.querySelector('#winnerText').textContent='';
         (async () => { await wait(200);
-        document.querySelector('#computerText').textContent='Choosing...'; })();
+        document.querySelector('#computerText').textContent='Choosing...'; 
+        document.querySelector('#computerText').style.visibility='inherit'; })();
         (async () => { await wait(1000);
-            document.querySelector('#computerText').textContent='Computer chose ' + computerChoice; })();
+            document.querySelector('#computerText').textContent='Computer chose ' + computerChoice;})();
     console.log('winner is ' + winner);
         (async () => { await wait(1800);
-            document.querySelector('#resultText').textContent=result; })();
+            document.querySelector('#resultText').textContent=result; 
+            document.querySelector('#resultText').style.visibility='inherit';})();
         (async () => { await wait(2600);
-            updateWinnerText(winner); })();
+            updateWinnerText(winner);})();
+        (async () => { await wait(3400);
+            document.querySelector('#replay').style.display='inherit'; })();
 }
 
 function compareChoices(playerChoice, computerChoice) {
@@ -87,11 +90,31 @@ function highlightButton(selectedButton) {
     selectedButton.style.background = '#deeff5';
     selectedButton.style['border-color'] = '#deeff5';
     selectedButton.style.color = '#45565c';
+    return selectedButton;
 }
 
 function disableRpsControls() {
   let rpsControls=document.querySelectorAll('.rpsControl');
   rpsControls.forEach(rpsControl => rpsControl.disabled = true);
+}
+
+function enableRpsControls() {
+    let rpsControls=[document.querySelector('#Rock'), document.querySelector('#Paper'), document.querySelector('#Scissors')];
+    rpsControls.forEach(resetRpsStyle);
+    function resetRpsStyle(x) {
+        x.style.background = null;
+        x.style.color = null;
+        x.style['border-color'] = null;
+        x.disabled = false;
+    }
+}
+
+function replay() {
+    console.log('replaying');
+    document.querySelector('#computerText').style.visibility='hidden';
+    document.querySelector('#resultText').style.visibility='hidden';
+    enableRpsControls();
+    document.querySelector('#replay').style.display='none';
 }
 
 //Counters for round winners

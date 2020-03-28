@@ -12,16 +12,18 @@
     <h1>Rock, Paper, Scissors</h1>
 
     
-    <button id='play' onclick="togglePlayControls()">Play game</button>
+    <button class='normalButton' id='play' onclick="togglePlayControls()">Play game</button>
 
     <p class='hidden'>Make your selection:</p>
-    <button class='hidden' id='Rock' onclick="playRound('Rock')">Rock</button>
-    <button class='hidden' id='Paper' onclick="playRound('Paper')">Paper</button>
-    <button class='hidden' id='Scissors' onclick="playRound('Scissors')">Scissors</button>
+    <button class='hidden normalButton' id='Rock' onclick="playRound('Rock')">Rock</button>
+    <button class='hidden normalButton' id='Paper' onclick="playRound('Paper')">Paper</button>
+    <button class='hidden normalButton' id='Scissors' onclick="playRound('Scissors')">Scissors</button>
 
     <p id='computerText'></p>
     <p id='resultText'></p>
     <p id='winnerText'></p>
+
+    <button id='replay' onclick=replay()>Replay?</button>
 
 <script>
 
