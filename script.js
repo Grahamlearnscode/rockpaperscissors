@@ -20,19 +20,22 @@ function playRound(playerChoice) {
     let result=compareChoices(playerChoice, computerChoice);
     console.log(result);
     document.querySelector('#winnerText').textContent='';
-        (async () => { await wait(200);
+    (async () => { await wait(200);
         document.querySelector('#computerText').textContent='Choosing...'; 
         document.querySelector('#computerText').style.visibility='inherit'; })();
-        (async () => { await wait(1000);
-            document.querySelector('#computerText').textContent='Computer chose ' + computerChoice;})();
+    (async () => { await wait(1000);
+        document.querySelector('#computerText').textContent='Computer chose ' + computerChoice;})();
     console.log('winner is ' + winner);
-        (async () => { await wait(1800);
+    countWins(winner);
+    (async () => { await wait(1800);
             document.querySelector('#resultText').textContent=result; 
-            document.querySelector('#resultText').style.visibility='inherit';})();
-        (async () => { await wait(2600);
-            updateWinnerText(winner);})();
-        (async () => { await wait(3400);
-            document.querySelector('#replay').style.display='inherit'; })();
+        document.querySelector('#resultText').style.visibility='inherit';})();
+    (async () => { await wait(2600);
+        updateWinnerText(winner);})();
+    (async () => { await wait(3400);
+        document.querySelector('#replay').style.display='inherit'; 
+        document.querySelector('#resultsTable').classList.remove('inactive');
+        updateResultsTable();})();
 }
 
 function compareChoices(playerChoice, computerChoice) {
@@ -118,7 +121,20 @@ function replay() {
 }
 
 //Counters for round winners
-let w=0; let c=0; let i=0;
+let w=0; let c=0; let d=0; let i=0;
+
+function updateResultsTable() {
+    document.querySelector('#playerWins').textContent=w;
+    document.querySelector('#computerWins').textContent=c;
+    document.querySelector('#draws').textContent=d;
+}
+
+function countWins(winner) {
+    if (winner==='draw'){d++}
+    else if (winner==='player'){w++}
+    else {c++};
+    console.log('wins counted' + w + c +d);
+}
 
 function fiveRoundGame() {
     if (i<5) {
