@@ -14,3 +14,28 @@ div {
 a {
     color: inherit;
 }
+
+p {
+    margin-left: 5px;
+}
+
+.inactive {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.normalButton {
+    padding: 2px 5px;
+    margin: 0 5px;
+}
+
+#replay {
+    display: none;
+    padding: 2px 8px;
+    border-radius: 2%;
+    margin-top: 10px;
+    margin-left: 5px;
+}
